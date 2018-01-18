@@ -1,0 +1,208 @@
+name: my_root
+channels:
+- pytorch
+- intel
+- defaults
+dependencies:
+- _nb_ext_conf=0.4.0=py36_1
+- anaconda-client=1.6.6=py36h59e3ba0_0
+- clyent=1.2.2=py36h7e57e65_1
+- cudatoolkit=8.0=3
+- nb_anacondacloud=1.4.0=py36_0
+- nb_conda=2.2.1=py36h8118bb2_0
+- nb_conda_kernels=2.1.0=py36_0
+- nbpresent=3.0.2=py36h5f95a39_1
+- asn1crypto=0.22.0=py36_0
+- backports=1.0=py36_intel_6
+- bleach=2.0.0=py36_intel_0
+- boost=1.64.0=py36_intel_2
+- bzip2=1.0.6=intel_13
+- caffe=1.0.4=py36_intel_4
+- certifi=2017.7.27.1=py36_intel_0
+- cffi=1.10.0=py36_intel_0
+- chardet=3.0.4=py36_intel_0
+- cryptography=2.0.3=py36_intel_0
+- cycler=0.10.0=py36_intel_5
+- cython=0.27.1=py36_intel_0
+- daal=2018.0.1.20171012=0
+- decorator=4.1.2=py36_intel_0
+- distarray=0.6.0=py36_intel_4
+- entrypoints=0.2.3=py36_intel_0
+- fontconfig=2.12.5=intel_0
+- freetype=2.8=intel_0
+- get_terminal_size=1.0.0=py36_intel_5
+- gflags=2.2.1=intel_0
+- glog=0.3.5=intel_0
+- h5py=2.7.0=np113py36_intel_2
+- hdf5=1.10.1=intel_0
+- html5lib=0.999999999=py36_intel_0
+- icc_rt=2018.0.0=intel_0
+- icu=59.1=intel_0
+- idna=2.6=py36_intel_0
+- impi_rt=2018.0.1=intel_1
+- intelpython=2018.0.0=3
+- ipp=2018.0.1=intel_1
+- ipykernel=4.6.1=py36_intel_0
+- ipyparallel=6.0.2=py36_intel_0
+- ipython=6.1.0=py36_intel_0
+- ipython_genutils=0.2.0=py36_intel_0
+- ipywidgets=7.0.0=py36_intel_0
+- jinja2=2.9.6=py36_intel_0
+- jpeg=9b=intel_0
+- jsonschema=2.6.0=py36_intel_0
+- jupyter=1.0.0=py36_intel_5
+- jupyter_client=5.1.0=py36_intel_0
+- jupyter_console=5.1.0=py36_intel_0
+- jupyter_core=4.3.0=py36_intel_1
+- leveldb=1.20=intel_0
+- libffi=3.2.1=intel_4
+- libpng=1.6.32=intel_0
+- libsodium=1.0.13=intel_0
+- libtiff=4.0.8=intel_1
+- libxml2=2.9.5=intel_0
+- llvmlite=0.20.0=py36_intel_0
+- lmdb=0.9.18=intel_3
+- markupsafe=1.0=py36_intel_0
+- matplotlib=2.0.2=np113py36_intel_1
+- mistune=0.7.4=py36_intel_1
+- mkl=2018.0.1=intel_2
+- mkl-dnn=0.10=intel_0
+- mkl_fft=1.0.0=np113py36_intel_15
+- mkl_random=1.0.0=np113py36_intel_6
+- mlsl=1.0=intel_0
+- mpi4py=2.0.0=py36_intel_15
+- mpmath=0.19=py36_intel_5
+- nbconvert=5.2.1=py36_intel_0
+- nbformat=4.4.0=py36_intel_0
+- networkx=1.11=py36_intel_0
+- nose=1.3.7=py36_intel_16
+- notebook=5.0.0=py36_intel_0
+- numba=0.35.0=py36_intel_0
+- numexpr=2.6.2=np113py36_intel_5
+- numpy=1.13.3=py36_intel_6
+- olefile=0.44=py36_intel_0
+- opencv=3.1.0=np113py36_intel_8
+- openmp=2018.0.1=intel_0
+- openssl=1.0.2l=intel_0
+- pandas=0.20.3=np113py36_intel_4
+- pandocfilters=1.4.1=py36_intel_0
+- path.py=10.3.1=py36_intel_0
+- pexpect=4.2.1=py36_intel_1
+- pickleshare=0.7.4=py36_intel_1
+- pillow=4.2.1=py36_intel_0
+- pip=9.0.1=py36_intel_0
+- pixman=0.34.0=intel_0
+- portpicker=1.1.1=py36_0
+- prompt_toolkit=1.0.15=py36_intel_0
+- protobuf=3.2.0=py36_intel_0
+- ptyprocess=0.5.2=py36_intel_0
+- pycosat=0.6.2=py36_intel_2
+- pycparser=2.18=py36_intel_0
+- pydaal=2018.0.1.20171012=np113py36_intel_0
+- pygments=2.2.0=py36_intel_1
+- pyopenssl=17.2.0=py36_intel_0
+- pyparsing=2.2.0=py36_intel_0
+- pysocks=1.6.7=py36_intel_0
+- pytables=3.4.2=np113py36_intel_2
+- python=3.6.3=intel_3
+- python-dateutil=2.6.0=py36_intel_3
+- python-gflags=3.1.1=py36_intel_0
+- python-leveldb=0.194=py36_intel_0
+- pytz=2017.2=py36_intel_3
+- pywavelets=0.5.2=np113py36_intel_3
+- pyyaml=3.12=py36_intel_3
+- pyzmq=16.0.2=py36_intel_4
+- requests=2.18.4=py36_intel_0
+- ruamel_yaml=0.11.14=py36_intel_2
+- scikit-image=0.13.0=np113py36_intel_3
+- scikit-learn=0.19.0=np113py36_intel_6
+- scipy=0.19.1=np113py36_intel_23
+- setuptools=27.2.0=py36_intel_0
+- simplegeneric=0.8.1=py36_intel_5
+- six=1.10.0=py36_intel_8
+- snappy=1.1.7=intel_0
+- sqlite=3.20.1=intel_0
+- sympy=1.1.1=py36_intel_0
+- tbb=2018.0.1=py36_intel_3
+- tcl=8.6.4=intel_17
+- tensorflow=1.3.1=np113py36_1
+- terminado=0.6=py36_intel_6
+- testpath=0.3.1=py36_intel_0
+- theano=1.1=py36_intel_3
+- tk=8.6.4=intel_26
+- tornado=4.5.2=py36_intel_0
+- traitlets=4.3.2=py36_intel_1
+- urllib3=1.22=py36_intel_0
+- wcwidth=0.1.7=py36_intel_5
+- weakref=1.0.post1=py36_0
+- webencodings=0.5.1=py36_0
+- werkzeug=0.12.2=py36_1
+- wheel=0.29.0=py36_intel_5
+- widgetsnbextension=3.0.2=py36_0
+- xz=5.2.3=intel_0
+- yaml=0.1.7=intel_0
+- zeromq=4.2.2=intel_0
+- zlib=1.2.11=intel_3
+- pytorch=0.3.0=py36_cuda8.0.61_cudnn7.0.3h37a80b5_4
+- torchvision=0.2.0=py36h17b6947_1
+- pip:
+  - alabaster==0.7.10
+  - alembic==0.9.6
+  - appdirs==1.4.3
+  - astroid==1.5.3
+  - attrs==17.3.0
+  - babel==2.5.1
+  - backports.shutil-get-terminal-size==1.0.0
+  - backports.weakref==1.0.post1
+  - cfxjh==0.1.dev0
+  - cfxmagic==0.1.dev0
+  - configargparse==0.12.0
+  - coverage==4.4.2
+  - docutils==0.14
+  - environment-kernels==1.1
+  - filelock==2.0.13
+  - flake8==3.5.0
+  - funcsigs==1.0.2
+  - future==0.16.0
+  - imagesize==0.7.1
+  - ipython-genutils==0.2.0
+  - isort==4.2.15
+  - jupyter-client==5.1.0
+  - jupyter-console==5.1.0
+  - jupyter-core==4.3.0
+  - jupyterhub==0.7.2
+  - lazy-object-proxy==1.3.1
+  - mako==1.0.7
+  - mccabe==0.6.1
+  - mkl-random==1.0.0
+  - nb-anacondacloud==1.4.0
+  - nb-conda==2.2.1
+  - nb-conda-kernels==2.1.0
+  - nervananeon==2.4.0
+  - pamela==0.3.0
+  - pandoc==1.0.2
+  - pep8==1.7.1
+  - pluggy==0.6.0
+  - ply==3.10
+  - posix-ipc==1.0.0
+  - prompt-toolkit==1.0.15
+  - py==1.5.2
+  - py-cpuinfo==3.3.0
+  - pycodestyle==2.3.1
+  - pyflakes==1.6.0
+  - pylint==1.7.5
+  - pypandoc==1.4
+  - pytest==3.3.1
+  - pytest-cov==2.5.1
+  - pytest-mock==1.6.3
+  - python-editor==1.0.3
+  - snowballstemmer==1.2.1
+  - sphinx==1.6.5
+  - sphinxcontrib-websupport==1.0.1
+  - sqlalchemy==1.1.15
+  - tables==3.4.2
+  - torch==0.3.0.post4
+  - tqdm==4.19.5
+  - wrapt==1.10.11
+prefix: /home/u8710/.conda/envs/my_root
+
