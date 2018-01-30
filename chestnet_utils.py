@@ -27,6 +27,32 @@ train_folder = 'data/train_/'
 test_folder = 'data/test_/'
 data_folder = 'data/'
 
+class EqHist(object):
+
+    def __call__(self, img):
+        
+        img = np.asarray(img)
+#         print(type(img))
+        img = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+        eq = cv2.equalizeHist(img)
+        img2 = np.zeros((eq.shape[0],eq.shape[1],3))
+        img2[:,:,0] = eq
+        img2[:,:,1] = eq
+        img2[:,:,2] = eq
+        return img2
+
+class add_gausian_noise(object):
+
+    def __call__(self, img):
+        
+        img = np.asarray(img)
+        noise = np.random.normal(size = (img.shape))
+        img += noise
+        return img
+    
+    
+
+
 class XRayDataset(Dataset):
     
     def __init__(self, csv_file, path, transform = None,is_train=True, subset=700):
@@ -87,17 +113,22 @@ def get_tfms(sz):
     tfms = {    
         'train_aug': transforms.Compose([
             transforms.ToPILImage(),
-            transforms.Resize((230,230)),
+            transforms.Resize((sz+20,sz+20)),
             transforms.RandomCrop(sz),
             transforms.RandomHorizontalFlip(),
-            transforms.ColorJitter(brightness=0.3,contrast=0.7,saturation=0.7,hue=0.1),
+#             transforms.ColorJitter(brightness=0.5),
+#             EqHist(),
+#             add_gausian_noise(),
+#             transforms.ToPILImage(),
             transforms.ToTensor(),
             normalize
+
         ]),
 
         'test_aug': transforms.Compose([
             transforms.ToPILImage(),
             transforms.Resize((sz,sz)),
+            EqHist(),
     #         transforms.CenterCrop(227), #will try this later
             transforms.ToTensor(),
             normalize
@@ -106,8 +137,7 @@ def get_tfms(sz):
         'no_aug' : transforms.Compose([
             transforms.ToPILImage(),
             transforms.Resize((sz,sz)),
-            transforms.ToTensor(),
-            normalize
+
         ])
     }
     
@@ -172,7 +202,7 @@ def train_model(model, criterion, optimizer, scheduler, dataloaders, dataset_siz
                 if scheduler:
                     scheduler.step()
                 model.train(True)  # Set model to training mode
-            elif phase == 'val' or phase == 'sml_val' or phase == 'test':
+            elif phase == 'val' or phase == 'sml_val':
                 print('else ' + phase)
                 model.train(False)  # Set model to evaluate mode
             else:
@@ -198,6 +228,7 @@ def train_model(model, criterion, optimizer, scheduler, dataloaders, dataset_siz
 
                 outputs = model(inputs)
                 _, preds = torch.max(outputs.data, 1)
+#                 print(labels.size(),outputs.size())
                 loss = criterion(outputs, labels)
                     
                 if phase == 'train' or phase == 'sml_tr':
@@ -437,15 +468,7 @@ def merge_dataloaders(dataset):
     
     return samplers, dataloaders
 
-class EqHist(object):
-
-    def __call__(self, sample):
-        img = sample['image']
-        img = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
-        eq = cv2.equalizeHist(img)
-        img2 = np.zeros_like(eq)
-        img2[:,:,0] = eq
-        img2[:,:,1] = eq
-        img2[:,:,2] = eq
-        return img2
-    
+def show_sample(img,label = None,mapping=None):
+    plt.imshow(img)
+    if label:
+        plt.title("label={} and class_name={}".format(label,mapping[label]))

@@ -1,8 +1,8 @@
 from chestnet_utils import *
 
-_splits_ = ['sml_tr','sml_val']
-ne = 1
-sm = False
+_splits_ = ['train','sml_val']
+ne = 8
+sm = True
 decay = 0.7
 
 def train_model(model, criterion, optimizer, scheduler, dataloaders, dataset_sizes, num_epochs=25, data_split = ['train','val'],name='',save_model=True):
@@ -67,7 +67,7 @@ def train_model(model, criterion, optimizer, scheduler, dataloaders, dataset_siz
                 best_acc = epoch_acc
                 best_model_wts = model.state_dict()
                 if save_model:
-                    torch.save(best_model_wts,f'./models/model_{name}{epoch}/{num_epochs}_{best_acc}')
+                    torch.save(best_model_wts,f'./models/model_{name}{epoch}_t{num_epochs}_{best_acc}')
     
 
 
@@ -112,7 +112,7 @@ model_ft.cuda()
 criterion = nn.CrossEntropyLoss()
 optimizer_ft = optim.Adam(filter(lambda p: p.requires_grad, model_ft.parameters()), lr=1e-4)
 scheduler = optim.lr_scheduler.ExponentialLR(optimizer_ft, gamma=decay)
-model_ft,bacc,bwt = train_model(model_ft, criterion, optimizer_ft, scheduler, dataloaders, dataset_sizes, num_epochs=ne, data_split=_splits_,save_model=sm, name = '_epoch_128_')
+model_ft,bacc,bwt = train_model(model_ft, criterion, optimizer_ft, scheduler, dataloaders, dataset_sizes, num_epochs=ne+3, data_split=_splits_,save_model=sm, name = '_epoch_128_')
 
 tfms = get_tfms(180)
 transformed_dataset = XRayDataset(f'{data_folder}train.csv',f'{data_folder}',transform=tfms)
@@ -124,7 +124,7 @@ model_ft.cuda()
 criterion = nn.CrossEntropyLoss()
 optimizer_ft = optim.Adam(filter(lambda p: p.requires_grad, model_ft.parameters()), lr=1e-4)
 scheduler = optim.lr_scheduler.ExponentialLR(optimizer_ft, gamma=decay)
-model_ft,bacc,bwt = train_model(model_ft, criterion, optimizer_ft, scheduler, dataloaders, dataset_sizes, num_epochs=ne, data_split=_splits_,save_model=sm, name = '_epoch_180_')
+model_ft,bacc,bwt = train_model(model_ft, criterion, optimizer_ft, scheduler, dataloaders, dataset_sizes, num_epochs=ne+7, data_split=_splits_,save_model=sm, name = '_epoch_180_')
 
 
 tfms = get_tfms(224)
@@ -137,8 +137,14 @@ model_ft.cuda()
 criterion = nn.CrossEntropyLoss()
 optimizer_ft = optim.Adam(filter(lambda p: p.requires_grad, model_ft.parameters()), lr=1e-4)
 scheduler = optim.lr_scheduler.ExponentialLR(optimizer_ft, gamma=decay)
-model_ft,bacc,bwt = train_model(model_ft, criterion, optimizer_ft, scheduler, dataloaders, dataset_sizes, num_epochs=ne, data_split=_splits_,save_model=sm, name = '_epoch_224_')
+model_ft,bacc,bwt = train_model(model_ft, criterion, optimizer_ft, scheduler, dataloaders, dataset_sizes, num_epochs=ne+15, data_split=_splits_,save_model=sm, name = '_epoch_224_')
 
+
+pdted,lbs = predict(model_ft,'val',dataloaders,dataset_sizes,criterion)
+print(np.bincount(pdted))
+print(np.bincount(lbs))
+
+print(f1_score(lbs,pdted,average='weighted'))
 
 
 
