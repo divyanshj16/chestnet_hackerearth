@@ -114,11 +114,11 @@ def get_tfms(sz):
         'train_aug': transforms.Compose([
             transforms.ToPILImage(),
             transforms.Resize((sz+20,sz+20)),
-            transforms.RandomCrop(sz),
+            transforms.CenterCrop(sz),
             transforms.RandomHorizontalFlip(),
-#             transforms.ColorJitter(brightness=0.5),
-#             EqHist(),
-#             add_gausian_noise(),
+            transforms.ColorJitter(brightness=0.5,contrast=0.5,saturation=0.05),
+            EqHist(),
+            add_gausian_noise(),
 #             transforms.ToPILImage(),
             transforms.ToTensor(),
             normalize
