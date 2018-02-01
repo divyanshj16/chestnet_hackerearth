@@ -7,3 +7,6 @@ This [competiton](https://www.hackerearth.com/challenge/competitive/deep-learnin
 * Update README
 * Add Requirements
 * Add best model
+* Cleanup Code
+* Document Code
+* Do a Writeup on Medium
